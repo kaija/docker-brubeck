@@ -1,0 +1,3 @@
+[submodule "brubeck"]
+	path = brubeck
+	url = https://github.com/github/brubeck.git
