@@ -1,0 +1,15 @@
+version: '3'
+services:
+  statsd:
+    build: .
+    ports:
+      - 8126:8126
+      - 9126:9126
+    depends_on:
+      - graphite
+  graphite:
+    image: go-graphite
+    ports:
+      - 8080:80
+      - 2003-2004:2003-2004
+
