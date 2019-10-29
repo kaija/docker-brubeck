@@ -8,8 +8,8 @@ services:
     depends_on:
       - graphite
   graphite:
-    image: go-graphite
+    image: gographite/go-graphite
     ports:
-      - 8080:80
+      - 8888:80
       - 2003-2004:2003-2004
 
