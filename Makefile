@@ -1,7 +1,8 @@
 all: build
 
 build:
-	cd brubeck && git submodule init && git submodule update
+	git submodule update --init
+	cd brubeck && git submodule update --init
 	docker build -t brubeck .
 run:
 	docker run -it brubeck

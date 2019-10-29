@@ -1,3 +1,4 @@
 [submodule "brubeck"]
 	path = brubeck
-	url = https://github.com/github/brubeck.git
+	url = https://github.com/kaija/brubeck.git
+	branch = master
