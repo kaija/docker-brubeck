@@ -7,9 +7,27 @@ services:
       - 9126:9126
     depends_on:
       - graphite
+    links:
+      - graphite
+    sysctls:
+      net.core.somaxconn: 10240
+      net.ipv4.tcp_fin_timeout: 15
+      net.ipv4.tcp_tw_reuse: 1
   graphite:
     image: go-graphite
+    volumes:
+      - ./data/:/var/lib/graphite/
+      - ./conf/carbonapi.yaml:/etc/carbonapi/carbonapi.yaml
+      - ./conf/go-carbon.conf:/etc/go-carbon/go-carbon.conf
+      - ./conf/storage-schemas.conf:/etc/go-carbon/storage-schemas.conf
+      - ./conf/storage-aggregation.conf:/etc/go-carbon/storage-aggregation.conf
     ports:
-      - 8080:80
+      - 90:80
+      - 8080:8080
+      - 8081:8081
       - 2003-2004:2003-2004
-
+      - 2003-2004:2003-2004/udp
+    sysctls:
+      net.core.somaxconn: 10240
+      net.ipv4.tcp_fin_timeout: 15
+      net.ipv4.tcp_tw_reuse: 1
