@@ -22,4 +22,6 @@ COPY --from=builder /brubeck/brubeck /bin/brubeck
 
 COPY config.json /etc/brubeck/config.json
 
+EXPOSE 8125 9125
+
 CMD ["brubeck", "--config", "/etc/brubeck/config.json"]
